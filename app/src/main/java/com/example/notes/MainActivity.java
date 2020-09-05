@@ -1,6 +1,7 @@
 package com.example.notes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,11 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         initRecyclerView();
         //fakeData();
+
+        setSupportActionBar((Toolbar) findViewById(R.id.notes_toolbar));
+        setTitle("Notes");
         
     }
 
 //    private void fakeData(){
-//        for(int i=0;i<10;i++){
+//        for(int i=0;i<20;i++){
 //            Note note = new Note("New Note","This is a new note","Sep 2020");
 //            mNotes.add(note);
 //        }
