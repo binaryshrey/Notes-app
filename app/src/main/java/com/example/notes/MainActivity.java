@@ -13,7 +13,7 @@ import com.example.notes.model.Note;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NotesRecyclerAdapter.onNoteListener{
 
     private static final String TAG = "MainActivity";
 
@@ -52,8 +52,12 @@ public class MainActivity extends AppCompatActivity {
         VerticalHeightItemDecorator verticalHeightItemDecorator = new VerticalHeightItemDecorator(8);
         mRecyclerView.addItemDecoration(verticalHeightItemDecorator);
 
-        mAdapter = new NotesRecyclerAdapter(mNotes);
+        mAdapter = new NotesRecyclerAdapter(mNotes,this);
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    @Override
+    public void onNoteClick(int pos) {
+
+    }
 }
