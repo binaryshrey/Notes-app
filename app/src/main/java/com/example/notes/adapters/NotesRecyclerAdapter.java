@@ -31,6 +31,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.timestamp.setText(mNotes.get(position).getTimestamp());
+        holder.title.setText(mNotes.get(position).getTitle());
     }
 
     @Override
@@ -44,7 +45,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.timestamp);
+            title = itemView.findViewById(R.id.title);
             timestamp = itemView.findViewById(R.id.timestamp);
         }
     }

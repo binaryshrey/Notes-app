@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.notes.Utils.VerticalHeightItemDecorator;
 import com.example.notes.adapters.NotesRecyclerAdapter;
 import com.example.notes.model.Note;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
 //    private void fakeData(){
 //        for(int i=0;i<10;i++){
-//            Note note = new Note("title","content","timestamp");
+//            Note note = new Note("New Note","This is a new note","Sep 2020");
 //            mNotes.add(note);
 //        }
 //        mAdapter.notifyDataSetChanged();
@@ -43,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
     private void initRecyclerView(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
+
+        VerticalHeightItemDecorator verticalHeightItemDecorator = new VerticalHeightItemDecorator(8);
+        mRecyclerView.addItemDecoration(verticalHeightItemDecorator);
+
         mAdapter = new NotesRecyclerAdapter(mNotes);
         mRecyclerView.setAdapter(mAdapter);
     }
