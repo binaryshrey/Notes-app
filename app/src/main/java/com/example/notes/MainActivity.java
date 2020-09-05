@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.notes.Utils.VerticalHeightItemDecorator;
 import com.example.notes.adapters.NotesRecyclerAdapter;
@@ -13,7 +14,7 @@ import com.example.notes.model.Note;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements NotesRecyclerAdapter.onNoteListener{
+public class MainActivity extends AppCompatActivity implements NotesRecyclerAdapter.onNoteClickListener{
 
     private static final String TAG = "MainActivity";
 
@@ -30,20 +31,20 @@ public class MainActivity extends AppCompatActivity implements NotesRecyclerAdap
         mRecyclerView = findViewById(R.id.recyclerView);
 
         initRecyclerView();
-        //fakeData();
+        fakeData();
 
         setSupportActionBar((Toolbar) findViewById(R.id.notes_toolbar));
         setTitle("Notes");
         
     }
 
-//    private void fakeData(){
-//        for(int i=0;i<20;i++){
-//            Note note = new Note("New Note","This is a new note","Sep 2020");
-//            mNotes.add(note);
-//        }
-//        mAdapter.notifyDataSetChanged();
-//    }
+    private void fakeData(){
+        for(int i=0;i<20;i++){
+            Note note = new Note("New Note","This is a new note","Sep 2020");
+            mNotes.add(note);
+        }
+        mAdapter.notifyDataSetChanged();
+    }
 
     private void initRecyclerView(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -58,6 +59,6 @@ public class MainActivity extends AppCompatActivity implements NotesRecyclerAdap
 
     @Override
     public void onNoteClick(int pos) {
-
+        Log.d(TAG, "onNoteClick: " +pos);
     }
 }

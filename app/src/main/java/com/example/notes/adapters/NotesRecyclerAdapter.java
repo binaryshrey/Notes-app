@@ -16,9 +16,9 @@ import java.util.ArrayList;
 public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdapter.ViewHolder>{
 
     private ArrayList<Note> mNotes = new ArrayList<>();
-    private onNoteListener mOnNoteListener;
+    private onNoteClickListener mOnNoteListener;
 
-    public NotesRecyclerAdapter(ArrayList<Note> notes, onNoteListener onNoteListener) {
+    public NotesRecyclerAdapter(ArrayList<Note> notes, onNoteClickListener onNoteListener) {
         this.mNotes = notes;
         this.mOnNoteListener = onNoteListener;
     }
@@ -44,24 +44,23 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView title,timestamp;
-        onNoteListener onNoteListener;
+        onNoteClickListener mOnNoteListener;
 
-        public ViewHolder(@NonNull View itemView,onNoteListener onNoteListener) {
+        public ViewHolder(@NonNull View itemView,onNoteClickListener onNoteListener) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
             timestamp = itemView.findViewById(R.id.timestamp);
-            this.onNoteListener = onNoteListener;
-
-
+            this.mOnNoteListener = onNoteListener;
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            onNoteListener.onNoteClick(getAdapterPosition());
+            mOnNoteListener.onNoteClick(getAdapterPosition());
         }
     }
 
-    public interface onNoteListener{
+    public interface onNoteClickListener{
         public void onNoteClick(int pos);
     }
 }
